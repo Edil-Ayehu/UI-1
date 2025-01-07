@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:signin_ui/utils/app_textstyle.dart';
 import 'package:signin_ui/widgets/custom_textfield.dart';
 import 'package:signin_ui/widgets/social_button.dart';
 
@@ -37,21 +38,16 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
 
               // Modern Welcome Section
-              const Text(
+              Text(
                 'Create\nAccount',
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.w700,
-                  height: 1.2,
-                  letterSpacing: -0.5,
-                ),
+                style: AppTextStyle.h1,
               ),
               const SizedBox(height: 12),
               Text(
                 'Please fill in the details to get started',
-                style: TextStyle(
-                  color: Colors.grey.shade600,
-                  fontSize: 16,
+                style: AppTextStyle.withColor(
+                  AppTextStyle.bodyLarge,
+                  Colors.grey.shade600,
                 ),
               ),
               const SizedBox(height: 32),
@@ -103,12 +99,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   elevation: 0,
                 ),
-                child: const Text(
+                child: Text(
                   'Create Account',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: AppTextStyle.buttonLarge,
                 ),
               ),
               const SizedBox(height: 24),
@@ -117,9 +110,9 @@ class _SignUpPageState extends State<SignUpPage> {
               Center(
                 child: Text(
                   'Or continue with',
-                  style: TextStyle(
-                    color: Colors.grey.shade600,
-                    fontSize: 14,
+                  style: AppTextStyle.withColor(
+                    AppTextStyle.bodySmall,
+                    Colors.grey.shade600,
                   ),
                 ),
               ),
@@ -145,15 +138,18 @@ class _SignUpPageState extends State<SignUpPage> {
                   children: [
                     Text(
                       'Already have an account? ',
-                      style: TextStyle(color: Colors.grey.shade600),
+                      style: AppTextStyle.withColor(
+                        AppTextStyle.bodyMedium,
+                        Colors.grey.shade600,
+                      ),
                     ),
                     TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text(
+                      child: Text(
                         'Sign in',
-                        style: TextStyle(
-                          color: Colors.deepPurple,
-                          fontWeight: FontWeight.w600,
+                        style: AppTextStyle.withColor(
+                          AppTextStyle.buttonMedium,
+                          Colors.deepPurple,
                         ),
                       ),
                     ),

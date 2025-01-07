@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:signin_ui/pages/forgot_password_page.dart';
 import 'package:signin_ui/pages/signup_page.dart';
+import 'package:signin_ui/utils/app_textstyle.dart';
 import 'package:signin_ui/widgets/custom_textfield.dart';
 import 'package:signin_ui/widgets/social_button.dart';
 
@@ -45,21 +46,16 @@ class _SignInPageState extends State<SignInPage> {
                 const SizedBox(height: 32),
 
                 // Refined Welcome Text
-                const Text(
+                Text(
                   'Welcome back',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.5,
-                  ),
+                  style: AppTextStyle.h2,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Please enter your details to sign in',
-                  style: TextStyle(
-                    color: Colors.grey.shade600,
-                    fontSize: 15,
-                    letterSpacing: 0.2,
+                  style: AppTextStyle.withColor(
+                    AppTextStyle.bodyMedium,
+                    Colors.grey.shade600,
                   ),
                 ),
                 const SizedBox(height: 48),
@@ -102,8 +98,13 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                         ),
                         const SizedBox(width: 8),
-                        Text('Remember me',
-                            style: TextStyle(color: Colors.grey.shade700)),
+                        Text(
+                          'Remember me',
+                          style: AppTextStyle.withColor(
+                            AppTextStyle.bodyMedium,
+                            Colors.grey.shade700,
+                          ),
+                        ),
                       ],
                     ),
                     TextButton(
@@ -117,7 +118,10 @@ class _SignInPageState extends State<SignInPage> {
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.deepPurple,
                       ),
-                      child: const Text('Forgot password?'),
+                      child: Text(
+                        'Forgot password?',
+                        style: AppTextStyle.buttonMedium,
+                      ),
                     ),
                   ],
                 ),
@@ -137,13 +141,9 @@ class _SignInPageState extends State<SignInPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: const Text(
+                    child: Text(
                       'Sign in',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 0.5,
-                      ),
+                      style: AppTextStyle.buttonLarge,
                     ),
                   ),
                 ),
@@ -159,9 +159,9 @@ class _SignInPageState extends State<SignInPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
                         'Or continue with',
-                        style: TextStyle(
-                          color: Colors.grey.shade600,
-                          fontSize: 13,
+                        style: AppTextStyle.withColor(
+                          AppTextStyle.bodySmall,
+                          Colors.grey.shade600,
                         ),
                       ),
                     ),
@@ -191,9 +191,9 @@ class _SignInPageState extends State<SignInPage> {
                   children: [
                     Text(
                       "Don't have an account? ",
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 15,
+                      style: AppTextStyle.withColor(
+                        AppTextStyle.bodyMedium,
+                        Colors.grey.shade600,
                       ),
                     ),
                     TextButton(
@@ -204,12 +204,11 @@ class _SignInPageState extends State<SignInPage> {
                               builder: (context) => const SignUpPage()),
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         'Create account',
-                        style: TextStyle(
-                          color: Colors.deepPurple,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 15,
+                        style: AppTextStyle.withColor(
+                          AppTextStyle.buttonMedium,
+                          Colors.deepPurple,
                         ),
                       ),
                     ),

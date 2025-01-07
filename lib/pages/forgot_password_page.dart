@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:signin_ui/utils/app_textstyle.dart';
 import 'package:signin_ui/widgets/custom_textfield.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
@@ -50,21 +51,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               const SizedBox(height: 24),
 
               // Title and Description
-              const Text(
+              Text(
                 'Forgot Password?',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: -0.5,
-                ),
+                style: AppTextStyle.h2,
               ),
               const SizedBox(height: 12),
               Text(
                 'No worries! Enter your email and we\'ll send you reset instructions.',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.grey.shade600,
-                  height: 1.5,
+                style: AppTextStyle.withColor(
+                  AppTextStyle.bodyMedium,
+                  Colors.grey.shade600,
                 ),
               ),
               const SizedBox(height: 32),
@@ -72,10 +68,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               // Email Input Field
               Text(
                 'Email',
-                style: TextStyle(
-                  color: Colors.grey.shade800,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                style: AppTextStyle.withColor(
+                  AppTextStyle.labelMedium,
+                  Colors.grey.shade800,
                 ),
               ),
               const SizedBox(height: 8),
@@ -92,8 +87,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Add reset password logic here
-                    // Show success message or navigate to next screen
                     _showResetSuccessDialog(context);
                   },
                   style: ElevatedButton.styleFrom(
@@ -105,13 +98,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     'Reset Password',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.5,
-                    ),
+                    style: AppTextStyle.buttonLarge,
                   ),
                 ),
               ),
@@ -123,10 +112,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   onPressed: () => Navigator.pop(context),
                   child: Text(
                     'Back to Sign in',
-                    style: TextStyle(
-                      color: Colors.grey.shade600,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
+                    style: AppTextStyle.withColor(
+                      AppTextStyle.buttonMedium,
+                      Colors.grey.shade600,
                     ),
                   ),
                 ),
@@ -161,20 +149,17 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       size: 32, color: Colors.deepPurple),
                 ),
                 const SizedBox(height: 24),
-                const Text(
+                Text(
                   'Check your email',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: AppTextStyle.h3,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'We have sent password recovery instructions to your email.',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.grey.shade600,
-                    height: 1.5,
+                  style: AppTextStyle.withColor(
+                    AppTextStyle.bodyMedium,
+                    Colors.grey.shade600,
                   ),
                 ),
                 const SizedBox(height: 24),
@@ -191,7 +176,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: const Text('OK, got it!'),
+                    child: Text(
+                      'OK, got it!',
+                      style: AppTextStyle.buttonMedium,
+                    ),
                   ),
                 ),
               ],

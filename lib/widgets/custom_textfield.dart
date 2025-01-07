@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:signin_ui/utils/app_textstyle.dart';
 
 class CustomTextField extends StatelessWidget {
   final String label;
@@ -31,10 +32,9 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(
-            color: Colors.grey.shade800,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
+          style: AppTextStyle.withColor(
+            AppTextStyle.labelMedium,
+            Colors.grey.shade800,
           ),
         ),
         const SizedBox(height: 8),
@@ -43,9 +43,13 @@ class CustomTextField extends StatelessWidget {
           obscureText: isPassword && obscureText,
           keyboardType: keyboardType,
           validator: validator,
+          style: AppTextStyle.bodyMedium,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(color: Colors.grey.shade400),
+            hintStyle: AppTextStyle.withColor(
+              AppTextStyle.bodyMedium,
+              Colors.grey.shade400,
+            ),
             prefixIcon: Icon(icon, color: Colors.grey.shade400),
             suffixIcon: isPassword
                 ? IconButton(
