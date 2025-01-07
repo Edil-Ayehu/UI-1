@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:signin_ui/pages/forgot_password_page.dart';
 import 'package:signin_ui/pages/signup_page.dart';
+import 'package:signin_ui/widgets/custom_textfield.dart';
 import 'package:signin_ui/widgets/social_button.dart';
 
 class SignInPage extends StatefulWidget {
@@ -65,13 +66,14 @@ class _SignInPageState extends State<SignInPage> {
 
                 // Enhanced TextField styling
                 const SizedBox(height: 32),
-                _buildTextField(
+                const CustomTextField(
                   label: 'Email',
                   hint: 'name@example.com',
                   icon: Icons.email_outlined,
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 16),
-                _buildTextField(
+                CustomTextField(
                   label: 'Password',
                   hint: 'Enter your password',
                   icon: Icons.lock_outline,
@@ -218,55 +220,6 @@ class _SignInPageState extends State<SignInPage> {
           ),
         ),
       ),
-    );
-  }
-
-  // Add this helper method for consistent TextField styling
-  Widget _buildTextField({
-    required String label,
-    required String hint,
-    required IconData icon,
-    bool isPassword = false,
-    bool obscureText = false,
-    VoidCallback? onToggleVisibility,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            color: Colors.grey.shade800,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          obscureText: isPassword && obscureText,
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: TextStyle(color: Colors.grey.shade400),
-            prefixIcon: Icon(icon, color: Colors.grey.shade400),
-            suffixIcon: isPassword
-                ? IconButton(
-                    icon: Icon(
-                      obscureText ? Icons.visibility_off : Icons.visibility,
-                      color: Colors.grey.shade400,
-                    ),
-                    onPressed: onToggleVisibility,
-                  )
-                : null,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none,
-            ),
-            filled: true,
-            fillColor: Colors.grey.shade50,
-            contentPadding: const EdgeInsets.all(16),
-          ),
-        ),
-      ],
     );
   }
 }

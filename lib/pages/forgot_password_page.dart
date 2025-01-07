@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:signin_ui/widgets/custom_textfield.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -78,21 +79,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
               ),
               const SizedBox(height: 8),
-              TextField(
+              const CustomTextField(
+                label: 'Email',
+                hint: 'Enter your email',
+                icon: Icons.email_outlined,
                 keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  hintText: 'Enter your email',
-                  hintStyle: TextStyle(color: Colors.grey.shade400),
-                  prefixIcon: Icon(Icons.email_outlined, 
-                      color: Colors.grey.shade400),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey.shade50,
-                  contentPadding: const EdgeInsets.all(16),
-                ),
               ),
               const SizedBox(height: 24),
 
@@ -166,7 +157,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     color: Colors.deepPurple.shade50,
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(Icons.mark_email_read,
+                  child: const Icon(Icons.mark_email_read,
                       size: 32, color: Colors.deepPurple),
                 ),
                 const SizedBox(height: 24),

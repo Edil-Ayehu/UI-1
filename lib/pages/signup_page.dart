@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:signin_ui/widgets/custom_textfield.dart';
 import 'package:signin_ui/widgets/social_button.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -56,19 +57,20 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(height: 32),
 
               // Enhanced Form Fields
-              _buildTextField(
+              const CustomTextField(
                 label: 'Full Name',
                 hint: 'Enter your name',
                 icon: Icons.person_outline,
               ),
               const SizedBox(height: 20),
-              _buildTextField(
+              const CustomTextField(
                 label: 'Email',
                 hint: 'name@example.com',
                 icon: Icons.email_outlined,
+                keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 20),
-              _buildTextField(
+              CustomTextField(
                 label: 'Password',
                 hint: 'Create a strong password',
                 icon: Icons.lock_outline,
@@ -78,7 +80,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     setState(() => _obscureText = !_obscureText),
               ),
               const SizedBox(height: 20),
-              _buildTextField(
+              CustomTextField(
                 label: 'Confirm Password',
                 hint: 'Repeat your password',
                 icon: Icons.lock_outline,
@@ -162,55 +164,6 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ),
       ),
-    );
-  }
-
-  // Helper method for consistent TextField styling
-  Widget _buildTextField({
-    required String label,
-    required String hint,
-    required IconData icon,
-    bool isPassword = false,
-    bool obscureText = false,
-    VoidCallback? onToggleVisibility,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            color: Colors.grey.shade800,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          obscureText: isPassword && obscureText,
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: TextStyle(color: Colors.grey.shade400),
-            prefixIcon: Icon(icon, color: Colors.grey.shade400),
-            suffixIcon: isPassword
-                ? IconButton(
-                    icon: Icon(
-                      obscureText ? Icons.visibility_off : Icons.visibility,
-                      color: Colors.grey.shade400,
-                    ),
-                    onPressed: onToggleVisibility,
-                  )
-                : null,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none,
-            ),
-            filled: true,
-            fillColor: Colors.grey.shade50,
-            contentPadding: const EdgeInsets.all(16),
-          ),
-        ),
-      ],
     );
   }
 }
