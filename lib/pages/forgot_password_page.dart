@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:signin_ui/utils/app_textstyle.dart';
 import 'package:signin_ui/widgets/custom_textfield.dart';
 
@@ -12,6 +13,12 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -66,14 +73,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               const SizedBox(height: 32),
 
               // Email Input Field
-              Text(
-                'Email',
-                style: AppTextStyle.withColor(
-                  AppTextStyle.labelMedium,
-                  Colors.grey.shade800,
-                ),
-              ),
-              const SizedBox(height: 8),
               const CustomTextField(
                 label: 'Email',
                 hint: 'Enter your email',
