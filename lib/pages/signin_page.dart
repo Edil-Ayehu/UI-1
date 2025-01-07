@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:signin_ui/pages/forgot_password_page.dart';
 import 'package:signin_ui/pages/signup_page.dart';
 import 'package:signin_ui/widgets/social_button.dart';
 
@@ -104,7 +105,13 @@ class _SignInPageState extends State<SignInPage> {
                       ],
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ForgotPasswordPage()),
+                        );
+                      },
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.deepPurple,
                       ),
