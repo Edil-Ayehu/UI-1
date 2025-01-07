@@ -15,47 +15,39 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 32.0, vertical: 24.0),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // App Icon with gradient background
+                // Modern App Icon with subtle gradient
                 Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Colors.deepPurple.shade200,
-                        Colors.deepPurple.shade400
+                        Colors.deepPurple.shade50,
+                        Colors.deepPurple.shade100,
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.deepPurple.withOpacity(0.1),
-                        blurRadius: 20,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  child:
-                      const Icon(Icons.language, size: 45, color: Colors.white),
+                  child: Icon(Icons.language,
+                      size: 40, color: Colors.deepPurple.shade400),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 32),
 
-                // Welcome Text with enhanced typography
+                // Refined Welcome Text
                 const Text(
                   'Welcome back',
                   style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 28,
+                    fontWeight: FontWeight.w600,
                     letterSpacing: -0.5,
                   ),
                 ),
@@ -70,60 +62,23 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 const SizedBox(height: 48),
 
-                // Email TextField with enhanced design
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Email address',
-                    hintText: 'Enter your email',
-                    hintStyle: TextStyle(color: Colors.grey.shade400),
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(
-                          color: Colors.deepPurple, width: 1.5),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding: const EdgeInsets.all(20),
-                  ),
-                ),
-                const SizedBox(height: 24),
-
-                // Password TextField with enhanced design
-                TextField(
-                  obscureText: _obscureText,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    hintText: 'Enter your password',
-                    hintStyle: TextStyle(color: Colors.grey.shade400),
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(
-                          color: Colors.deepPurple, width: 1.5),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding: const EdgeInsets.all(20),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _obscureText ? Icons.visibility_off : Icons.visibility,
-                        color: Colors.grey.shade500,
-                      ),
-                      onPressed: () =>
-                          setState(() => _obscureText = !_obscureText),
-                    ),
-                  ),
+                // Enhanced TextField styling
+                const SizedBox(height: 32),
+                _buildTextField(
+                  label: 'Email',
+                  hint: 'name@example.com',
+                  icon: Icons.email_outlined,
                 ),
                 const SizedBox(height: 16),
+                _buildTextField(
+                  label: 'Password',
+                  hint: 'Enter your password',
+                  icon: Icons.lock_outline,
+                  isPassword: true,
+                  obscureText: _obscureText,
+                  onToggleVisibility: () =>
+                      setState(() => _obscureText = !_obscureText),
+                ),
 
                 // Remember Me and Forgot Password with subtle design
                 Row(
@@ -256,6 +211,55 @@ class _SignInPageState extends State<SignInPage> {
           ),
         ),
       ),
+    );
+  }
+
+  // Add this helper method for consistent TextField styling
+  Widget _buildTextField({
+    required String label,
+    required String hint,
+    required IconData icon,
+    bool isPassword = false,
+    bool obscureText = false,
+    VoidCallback? onToggleVisibility,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            color: Colors.grey.shade800,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        const SizedBox(height: 8),
+        TextField(
+          obscureText: isPassword && obscureText,
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: TextStyle(color: Colors.grey.shade400),
+            prefixIcon: Icon(icon, color: Colors.grey.shade400),
+            suffixIcon: isPassword
+                ? IconButton(
+                    icon: Icon(
+                      obscureText ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.grey.shade400,
+                    ),
+                    onPressed: onToggleVisibility,
+                  )
+                : null,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide.none,
+            ),
+            filled: true,
+            fillColor: Colors.grey.shade50,
+            contentPadding: const EdgeInsets.all(16),
+          ),
+        ),
+      ],
     );
   }
 }
