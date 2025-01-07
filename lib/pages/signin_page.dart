@@ -15,182 +15,213 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 32.0, vertical: 24.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // App Icon
+                // App Icon with gradient background
                 Container(
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey.shade300),
-                    borderRadius: BorderRadius.circular(12),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.deepPurple.shade200,
+                        Colors.deepPurple.shade400
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.deepPurple.withOpacity(0.1),
+                        blurRadius: 20,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
                   ),
-                  child: const Icon(Icons.language,
-                      size: 40, color: Colors.deepPurple),
+                  child:
+                      const Icon(Icons.language, size: 45, color: Colors.white),
                 ),
-                const SizedBox(height: 18),
+                const SizedBox(height: 40),
 
-                // Welcome Text
+                // Welcome Text with enhanced typography
                 const Text(
                   'Welcome back',
                   style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 36,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: -0.5,
                   ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 8),
                 Text(
                   'Please enter your details to sign in',
                   style: TextStyle(
                     color: Colors.grey.shade600,
-                    fontSize: 14,
+                    fontSize: 15,
+                    letterSpacing: 0.2,
                   ),
                 ),
-                const SizedBox(height: 32),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Email address',
-                      style:
-                          TextStyle(color: Colors.grey.shade800, fontSize: 18),
-                    ),
-                    const SizedBox(height: 8),
-                    // Email TextField
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Enter your email',
-                        hintStyle: TextStyle(color: Colors.grey.shade400),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.grey.shade300),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.grey.shade400),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Password',
-                      style:
-                          TextStyle(color: Colors.grey.shade800, fontSize: 18),
-                    ),
-                    const SizedBox(height: 8),
-                    // Password TextField
-                    TextField(
-                      obscureText: _obscureText,
-                      decoration: InputDecoration(
-                        hintText: 'Enter your password',
-                        hintStyle: TextStyle(color: Colors.grey.shade400),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.grey.shade300),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.grey.shade400),
-                        ),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _obscureText
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color: Colors.grey.shade500,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _obscureText = !_obscureText;
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 48),
 
-                // Remember Me and Forgot Password
+                // Email TextField with enhanced design
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Email address',
+                    hintText: 'Enter your email',
+                    hintStyle: TextStyle(color: Colors.grey.shade400),
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(
+                          color: Colors.deepPurple, width: 1.5),
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.all(20),
+                  ),
+                ),
+                const SizedBox(height: 24),
+
+                // Password TextField with enhanced design
+                TextField(
+                  obscureText: _obscureText,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    hintText: 'Enter your password',
+                    hintStyle: TextStyle(color: Colors.grey.shade400),
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(
+                          color: Colors.deepPurple, width: 1.5),
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.all(20),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                        color: Colors.grey.shade500,
+                      ),
+                      onPressed: () =>
+                          setState(() => _obscureText = !_obscureText),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+
+                // Remember Me and Forgot Password with subtle design
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        Checkbox(
-                          value: false,
-                          onChanged: (value) {},
-                          activeColor: Colors.deepPurple,
-                          side: BorderSide(color: Colors.grey.shade400),
+                        SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Checkbox(
+                            value: false,
+                            onChanged: (value) {},
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            side: BorderSide(color: Colors.grey.shade400),
+                          ),
                         ),
-                        const Text('Remember for 30 days'),
+                        const SizedBox(width: 8),
+                        Text('Remember me',
+                            style: TextStyle(color: Colors.grey.shade700)),
                       ],
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: const Text(
-                        'Forgot password?',
-                        style: TextStyle(color: Colors.deepPurple),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.deepPurple,
                       ),
+                      child: const Text('Forgot password?'),
                     ),
                   ],
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 32),
 
-                // Sign In Button
+                // Sign In Button with gradient
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
                       backgroundColor: Colors.deepPurple,
                       foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
                     child: const Text(
                       'Sign in',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.5,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
-                // Or Divider
+                const SizedBox(height: 32),
+
+                // Or continue with section
                 Row(
                   children: [
-                    Expanded(child: Divider(color: Colors.grey.shade300)),
+                    Expanded(
+                        child: Divider(
+                            color: Colors.grey.shade300, thickness: 0.5)),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        'or Continue with',
-                        style: TextStyle(color: Colors.grey.shade600),
+                        'Or continue with',
+                        style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontSize: 13,
+                        ),
                       ),
                     ),
-                    Expanded(child: Divider(color: Colors.grey.shade300)),
+                    Expanded(
+                        child: Divider(
+                            color: Colors.grey.shade300, thickness: 0.5)),
                   ],
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 32),
 
-                // Social Sign In Buttons
+                // Social buttons with enhanced spacing
                 const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SocialButton(imagePath: 'assets/images/google.png'),
+                    SizedBox(width: 20),
                     SocialButton(imagePath: 'assets/images/apple.png'),
+                    SizedBox(width: 20),
                     SocialButton(imagePath: 'assets/images/fb.png'),
                   ],
                 ),
-                const SizedBox(height: 24),
-                // Create Account Link
+                const SizedBox(height: 32),
+
+                // Create account link with enhanced typography
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -198,7 +229,7 @@ class _SignInPageState extends State<SignInPage> {
                       "Don't have an account? ",
                       style: TextStyle(
                         color: Colors.grey.shade600,
-                        fontSize: 16,
+                        fontSize: 15,
                       ),
                     ),
                     TextButton(
@@ -213,8 +244,8 @@ class _SignInPageState extends State<SignInPage> {
                         'Create account',
                         style: TextStyle(
                           color: Colors.deepPurple,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 15,
                         ),
                       ),
                     ),
